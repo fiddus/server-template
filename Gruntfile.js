@@ -16,11 +16,10 @@ module.exports = function (grunt) {
         },
 
         jscs: {
-            src: [
-                './**/*.js'
-            ],
+            src: './**/*.js',
             options: {
-                config: '.jscsrc'
+                config: '.jscsrc',
+                excludeFiles: ['node_modules/**/*']
             }
         },
 
