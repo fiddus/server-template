@@ -778,7 +778,7 @@ describe('User API Controller Tests', function () {
                                     return done(err);
                                 }
                                 /* jscs:disable requireCamelCaseOrUpperCaseIdentifiers */
-                                activationCode = user.activation_code;
+                                activationCode = user.activation_code; // jshint ignore:line
                                 /* jscs:enable requireCamelCaseOrUpperCaseIdentifiers */
                                 done();
                             });
