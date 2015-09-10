@@ -40,5 +40,5 @@ module.exports = function (app) {
     app.use(stuffResponse());
     app.use(errorHandler());
     app.set('view engine', 'ejs');
-    app.set('views', process.cwd() + '/server/resources/templates');
+    app.set('views', process.cwd() + '/resources/templates');
 };
