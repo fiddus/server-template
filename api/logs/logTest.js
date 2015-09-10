@@ -10,8 +10,8 @@ var app = require('../../app'),
     Log = require('./logModel'),
     request = require('supertest'),
     expect = require('chai').expect,
-    moment = require('moment'),
-    Sequence = require('sequence').Sequence;
+    async = require('async'),
+    moment = require('moment');
 
 describe('Log Tests', function () {
 
@@ -63,21 +63,18 @@ describe('Log Tests', function () {
             };
 
         before(function (done) {
-            var sequence = Sequence.create();
 
-            sequence
-                // Clean Database
-                .then(function (next) {
+            async.series([
+                function cleanDb (next) {
                     Log.remove({}, next);
-                })
-                // Add Log Entry #1
-                .then(function (next) {
+                },
+                function addLogEntry1 (next) {
                     Log.create(logEntry1, next);
-                })
-                // Add Log Entry #2
-                .then(function () {
+                },
+                function addLogEntry2 () {
                     Log.create(logEntry2, done);
-                });
+                }
+            ]);
         });
 
         after(function (done) {

@@ -9,14 +9,14 @@ var express = require('express'),
     mongoose = require('mongoose'),
     app = express(),
     server = require('http').createServer(app),
-    sequence = require('sequence').Sequence.create(),
+    async = require('async'),
     MONGODB_URI = config.db.baseUrl + config.db.appDB;
 
 require('./config/express')(app);
 require('./routes')(app);
 
-sequence
-    .then(function (next) {
+async.series([
+    function connectToMongoDB (next) {
         mongoose.connect(MONGODB_URI, {}, function (err) {
 
             if (err) {
@@ -28,13 +28,14 @@ sequence
                 next();
             }
         });
-    })
-    .then(function () {
+    },
+    function startListening () {
         server.listen(config.port, function () {
             if (app.get('env') !== 'test') {
                 console.log('Express server listening on port', config.port, 'on', app.get('env'), 'mode');
             }
         });
-    });
+    }
+]);
 
 module.exports = app;

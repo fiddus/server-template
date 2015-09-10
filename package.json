@@ -54,7 +54,6 @@
     "passport-facebook": "^2.0.0",
     "passport-local": "^1.0.0",
     "promise": "^7.0.3",
-    "request": "^2.57.0",
-    "sequence": "^3.0.0"
+    "request": "^2.57.0"
   }
 }
