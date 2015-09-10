@@ -5,9 +5,9 @@ language: node_js
 node_js:
   - 4.0
 
-# The path fornpm Xunit to output test reports
-env:
-  - NODE_ENV=test AWS_ACCESS_KEY_ID=SDDFJOIEJSD283920 AWS_SECRET_ACCESS_KEY=jJFD03jsdfhlksdf/we9hdn03n
+# Define any environment variables needed to test the app
+#env:
+#  - NODE_ENV=test AWS_ACCESS_KEY_ID=SDDFJOIEJSD283920 AWS_SECRET_ACCESS_KEY=jJFD03jsdfhlksdf/we9hdn03n
 
 services:
   - mongodb
